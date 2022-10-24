@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fotoblog</title>
+</head>
+<body>
+    <h1>Bienvenue</h1>
+    {% block content %}{% endblock content %}
+    {% if user.is_authenticated %}
+        <p>Vous etes connecté en tant que {{ request.user }}.</p>
+        <a href="{% url 'logout' %}">Se deconnecter</a>
+    {% endif %}
+
+
+
+
+</body>
+</html>
