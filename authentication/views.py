@@ -12,7 +12,8 @@ def login_page(request):
             user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
             if user is not None:
                 login(request, user)
-                message = f'bonjour {user.username} ! Vous etes connecté'
+                # message = f'bonjour {user.username} ! Vous etes connecté'
+                return redirect('home')
             else:
                 message = 'Identifiants invalides!'
     return render(
