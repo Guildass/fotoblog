@@ -15,14 +15,30 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from django.contrib.auth.views import LoginView
 import authentication.views
 import blog.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', authentication.views.login_page, name='login'),
-    path('logout/', authentication.views.logout_user, name='logout'),
+    # path('', authentication.views.login_page, name='login'), # Vue avec fonction
+    # path('', authentication.views.LoginPageView.as_view(), name='login'), # Vue avec classe
+    path('', LoginView.as_view(       # Vue avec vue generique
+        template_name='authentication/login.html',
+        redirect_authenticated_user=True
+        ),
+        name='login'),
+
+    path('logout/', LoginView.as_view, name='logout'),
+    path('change_passeword', LoginView.as_view(
+        template_name='authentication/password_change.html'),
+        name='password_change',
+            ),
+    path('change_passeword_doen', LoginView.as_view(
+        template_name='authentication/password_change_done.html'),
+        name='password_change_done',
+            ),
+
     path('home/', blog.views.home, name='home'),
 
 ]
