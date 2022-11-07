@@ -1,4 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-    <p>Vous etes connecté !</p>
+
+    <h1>Photo</h1>
+    {% for photo in photos %}
+        <img src="{{ photo.image.url }}">
+        <p>{{ photo.caption }}</p>
+    {% endfor %}
+    <a href="{% url 'logout' %}">Se deconnecter</a>
+    <a href="{% url 'upload_photo' %}">Ajout Publication</a>
+    <a href="{% url 'password_change' %}">Change MDP</a>
+
 {% endblock %}
