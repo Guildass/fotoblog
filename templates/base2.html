@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fotoblog</title>
+
+     {% load static %}
+   <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+</head>
+<body class="bg-light" class="container">
+    <div class="row">
+        <div class="col-4 border-2">
+             <header>
+                <h1>FOTOBLOG</h1>
+                <a href="{% url 'logout' %}">Se deconnecter</a>
+{#                <a href="{% url 'upload_photo' %}">Ajout Publication</a>#}
+                <a href="{% url 'password_change' %}">Change MDP</a>
+                <a href="{% url 'blog_create' %}">Ecrire Billet</a>
+                 {% if user.is_authenticated %}
+                    <p>Vous etes connecté en tant que {{ request.user }}.</p>
+                 {% endif %}
+            </header>
+        </div>
+        <div class="col-8 border">
+            {% block content %}{% endblock content %}
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

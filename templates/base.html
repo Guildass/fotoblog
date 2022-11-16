@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>fotoblog</title>
+
+     {% load static %}
+   <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <script src="{% static 'js/bootstrap.js' %}"></script>
 </head>
-<body>
-    <h1>FOTOBLOG</h1>
+<body class="bg-info">
+    <header>
+        <h1>FOTOBLOG</h1>
+    </header>
+
     {% block content %}{% endblock content %}
     {% if user.is_authenticated %}
         <p>Vous etes connecté en tant que {{ request.user }}.</p>

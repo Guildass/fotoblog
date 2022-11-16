@@ -1,0 +1,13 @@
+{% extends 'base2.html' %}
+{% block content %}
+
+    <h1>Creer un Post</h1>
+    <form method="post" enctype="multipart/form-data">
+        {{ blog_form.as_p }}
+        {{ photo_form.as_p }}
+        {% csrf_token %}
+        <button type="submit">Publier</button>
+    </form>
+
+
+{% endblock %}

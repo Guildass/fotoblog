@@ -45,7 +45,10 @@ urlpatterns = [
 
     path('home/', blog.views.home, name='home'),
 
-    path('photo/upload', blog.views.photo_upload, name='upload_photo')
+    # path('photo/upload', blog.views.photo_upload, name='upload_photo'),
+
+    path('blog/create', blog.views.blog_photo_upload, name='blog_create'),
+    path('blog/<int:blog_id>', blog.views.view_blog, name='view_blog'),
 
 ]
 

@@ -1,13 +1,15 @@
-{% extends 'base.html' %}
+{% extends 'base2.html' %}
 {% block content %}
 
-    <h1>Photo</h1>
-    {% for photo in photos %}
-        <img src="{{ photo.image.url }}">
-        <p>{{ photo.caption }}</p>
+    <h1>Blog</h1>
+    {% for blog in blogs %}
+        <a href="{% url 'view_blog' blog.id %}">
+             <h2>Billet : {{ blog.title }}</h2>
+             <img src="{{ blog.photo.image.url }}" width="80" height="80">
+        </a>
+        <p>{{ blog.author }}</p>
+        <hr>
     {% endfor %}
-    <a href="{% url 'logout' %}">Se deconnecter</a>
-    <a href="{% url 'upload_photo' %}">Ajout Publication</a>
-    <a href="{% url 'password_change' %}">Change MDP</a>
+
 
 {% endblock %}
